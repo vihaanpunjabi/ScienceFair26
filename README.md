@@ -16,7 +16,7 @@ A Python tool for analyzing vegetation characteristics and assessing fire risk u
 - [Troubleshooting](#troubleshooting)
 - [Output](#output)
 - [Examples](#examples)
-- [Contributing](#contributing)
+
 
 ---
 
