@@ -20,7 +20,7 @@ A Python tool for analyzing vegetation characteristics and assessing fire risk u
 
 ---
 
-## ✨ Features
+## Features
 
 ### Vegetation Indices
 - **NDVI** (Normalized Difference Vegetation Index) - Vegetation health
@@ -44,7 +44,7 @@ A Python tool for analyzing vegetation characteristics and assessing fire risk u
 
 ---
 
-## 📦 Requirements
+## Requirements
 
 ### Software
 - **Python 3.11 or higher**
@@ -233,7 +233,7 @@ analyzer.export_to_drive(
 
 ---
 
-## 📊 Output
+## Output
 
 ### 1. Interactive HTML Map
 - **File:** `fire_risk_map.html`
@@ -327,7 +327,7 @@ results = seasonal_analysis(aoi, year=2024)
 
 ---
 
-## 📐 Understanding Fire Risk Scores
+## Understanding Fire Risk Scores
 
 ### Fire Risk Score (0-100)
 The comprehensive fire risk score combines multiple factors:
@@ -351,7 +351,7 @@ The comprehensive fire risk score combines multiple factors:
 
 ---
 
-## 🔬 Technical Details
+## Technical Details
 
 ### Satellite Data Sources
 
@@ -391,40 +391,7 @@ NBR = (NIR - SWIR2) / (NIR + SWIR2)
 BSI = ((SWIR1 + Red) - (NIR + Blue)) / ((SWIR1 + Red) + (NIR + Blue))
 ```
 
----
 
-## 🗂️ Project Structure
-
-```
-fire-risk-analysis/
-├── README.md                          # This file
-├── requirements.txt                   # Python dependencies
-├── fire_vegetation_analysis.py        # Main analysis code
-├── examples/
-│   ├── california_example.py          # California wildfire analysis
-│   ├── custom_location_example.py     # Point-based analysis
-│   └── time_series_example.py         # Seasonal comparison
-├── outputs/
-│   ├── fire_risk_map.html            # Interactive map
-│   ├── fire_risk_analysis_gee.png    # Static visualization
-│   └── statistics_report.txt         # Analysis report
-└── docs/
-    ├── SETUP.md                      # Detailed setup guide
-    ├── API_REFERENCE.md              # API documentation
-    └── TROUBLESHOOTING.md            # Common issues and solutions
-```
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature-name`
-3. Commit your changes: `git commit -am 'Add new feature'`
-4. Push to the branch: `git push origin feature-name`
-5. Submit a pull request
 
 ### Development Setup
 
@@ -450,13 +417,13 @@ black fire_vegetation_analysis.py
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## 📚 References
+## References
 
 - [Google Earth Engine Documentation](https://developers.google.com/earth-engine)
 - [Sentinel-2 User Guide](https://sentinel.esa.int/web/sentinel/user-guides/sentinel-2-msi)
@@ -466,7 +433,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - Google Earth Engine for providing free satellite data access
 - European Space Agency (ESA) for Sentinel-2 data
@@ -475,21 +442,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## 📞 Support
-
-- **Issues:** [GitHub Issues](https://github.com/yourusername/fire-risk-analysis/issues)
-- **Discussions:** [GitHub Discussions](https://github.com/yourusername/fire-risk-analysis/discussions)
-- **Email:** your.email@example.com
-
----
-
-
-## ⭐ Star History
-
-If you find this project useful, please consider giving it a star on GitHub!
-
-[![Star History Chart](https://api.star-history.com/svg?repos=yourusername/fire-risk-analysis&type=Date)](https://star-history.com/#yourusername/fire-risk-analysis&Date)
-
----
-
-**Made with ❤️ for wildfire prevention and environmental conservation**
