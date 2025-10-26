@@ -1,4 +1,4 @@
-# 🔥 Fire-Prone Vegetation Analysis using Google Earth Engine
+# Fire-Prone Vegetation Analysis using Google Earth Engine
 
 A Python tool for analyzing vegetation characteristics and assessing fire risk using satellite imagery from Google Earth Engine (Sentinel-2 and Landsat 8/9).
 
@@ -483,21 +483,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## 🗺️ Roadmap
-
-### Version 1.1 (Coming Soon)
-- [ ] Real-time fire detection using thermal bands
-- [ ] Historical fire scar mapping
-- [ ] Integration with weather data (temperature, humidity, wind)
-- [ ] Machine learning fire risk prediction model
-
-### Version 2.0 (Future)
-- [ ] Web interface for non-technical users
-- [ ] Automated email alerts for high-risk areas
-- [ ] Mobile app for field data collection
-- [ ] Integration with local fire department systems
-
----
 
 ## ⭐ Star History
 
