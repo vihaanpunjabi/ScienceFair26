@@ -5,7 +5,8 @@ This code analyzes vegetation and fire risk using satellite data from GEE
 
 # Fix SSL certificate issues on Mac
 import ssl
-ssl._create_default_https_context = ssl._create_unverified_context
+import certifi
+ssl._create_default_https_context = lambda: ssl.create_default_context(cafile=certifi.where())
 
 import ee
 import numpy as np
@@ -17,40 +18,46 @@ from datetime import datetime, timedelta
 import geemap
 import folium
 
+# ============ CONFIGURATION ============
+# Your Earth Engine Project ID
+PROJECT_ID = 'sciencef-476305'
+
 # Initialize Earth Engine
-def initialize_earth_engine():
+def initialize_earth_engine(project_id=None):
     """Initialize Earth Engine with automatic authentication"""
+    if project_id is None:
+        project_id = PROJECT_ID
+    
     try:
-        # Try to initialize with default credentials
-        ee.Initialize(opt_url='https://earthengine-highvolume.googleapis.com')
-        print("✅ Earth Engine initialized successfully!")
+        # Try to initialize with project (force the project parameter)
+        ee.Initialize(project=project_id)
+        print(f"✅ Earth Engine initialized successfully with project: {project_id}")
         return True
     except Exception as e:
         print(f"⚠️  Not authenticated yet: {e}")
-        print("\n🔐 Starting authentication process...")
+        print(f"\n🔐 Starting authentication process for project: {project_id}...")
         print("A browser window will open for you to sign in with Google.")
-        print("If you don't have Earth Engine access, sign up at: https://earthengine.google.com/signup/")
         
         try:
-            # Authenticate (opens browser)
+            # Authenticate
             ee.Authenticate()
-            # Initialize after authentication
-            ee.Initialize(opt_url='https://earthengine-highvolume.googleapis.com')
-            print("✅ Authentication successful! Earth Engine is ready.")
+            # Initialize after authentication with project (explicitly set)
+            ee.Initialize(project=project_id)
+            print(f"✅ Authentication successful! Earth Engine is ready with project: {project_id}")
             return True
         except Exception as auth_error:
             print(f"❌ Authentication failed: {auth_error}")
-            print("\n📝 Manual steps to authenticate:")
-            print("1. Run this in your terminal:")
-            print("   python3 -c 'import ee; ee.Authenticate()'")
-            print("2. Sign in with your Google account")
-            print("3. Make sure you have Earth Engine access at: https://earthengine.google.com/signup/")
+            print("\n📝 Troubleshooting steps:")
+            print("1. Make sure you've enabled the Earth Engine API")
+            print("2. Check your project ID is correct: " + project_id)
+            print("3. Visit: https://console.cloud.google.com/apis/library/earthengine.googleapis.com")
+            print(f"4. Make sure the API is enabled for project: {project_id}")
             return False
 
 # Initialize at module import
 if not initialize_earth_engine():
-    print("\n⚠️  WARNING: Earth Engine not initialized. Please authenticate first.")
-    print("Run: python3 -c 'import ee; ee.Authenticate()'")
+    print("\n⚠️  WARNING: Earth Engine not initialized.")
+    print("Please run auth_fix.py first to authenticate.")
 
 
 class GEEFireRiskAnalyzer:
@@ -600,13 +607,17 @@ def example_california_wildfire_area():
     print("Interactive map saved to 'fire_risk_map.html'")
     
     # Download data for local analysis (for small areas)
-    print("\nDownloading data for local visualization...")
-    data = analyzer.download_data_for_local_analysis(scale=30)
+    # Note: The California area might be too large for direct download
+    # Uncomment the following lines for smaller areas (< 5km x 5km)
     
-    if data:
-        analyzer.visualize_local_analysis(data)
+    # print("\nDownloading data for local visualization...")
+    # data = analyzer.download_data_for_local_analysis(scale=30)
+    # if data:
+    #     analyzer.visualize_local_analysis(data)
     
     # For large areas, export to Google Drive instead
+    print("\nFor large area analysis, use Google Drive export:")
+    print("Uncomment the line below to export to your Google Drive")
     # analyzer.export_to_drive('california_fire_risk', scale=30)
     
     return analyzer
@@ -653,11 +664,7 @@ def example_custom_location(lon, lat, buffer_km=5):
 if __name__ == "__main__":
     print("Fire-Prone Vegetation Analysis with Google Earth Engine")
     print("=" * 70)
-    print("\nNOTE: Before running, you need to:")
-    print("1. Install required packages:")
-    print("   pip install earthengine-api geemap folium")
-    print("2. Authenticate Earth Engine:")
-    print("   earthengine authenticate")
+    print("\nNOTE: Make sure you've authenticated first by running auth_fix.py")
     print("=" * 70)
     
     # Run example
